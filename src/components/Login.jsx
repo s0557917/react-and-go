@@ -18,7 +18,7 @@ const Login = () => {
         if(email === "admin@example.com") {
             setJWTToken("abc")
             setAlertMessage("")
-            navigate("/movies")
+            navigate("/")
         } else {
             setAlertMessage("Invalid credentials!")
         }

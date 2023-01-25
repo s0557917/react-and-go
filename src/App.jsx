@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom"
+import { Link, Outlet, useNavigate } from "react-router-dom"
 import { useState } from "react";
 import Alert from "./components/Alert";
 
@@ -6,6 +6,13 @@ function App() {
 
   const [jwtToken, setJWTToken] = useState("");
   const [alertMessage, setAlertMessage] = useState("")
+
+  const navigate = useNavigate
+
+  const logOut = () => {
+    setJWTToken("")
+    navigate("/login")
+  }
 
   return (
     <div className="m-4">
@@ -16,7 +23,7 @@ function App() {
         <div className={`${jwtToken == "" ? "bg-green-500" : "bg-red-500"} px-3 py-1 rounded-sm text-white font-bold`}>
           {jwtToken == ""
             ? <Link to="/login"><span>Login</span></Link>
-            : <Link to="#"><span>Logout</span></Link>
+            : <Link to="#" onClick={logOut}><span>Logout</span></Link>
           }
         </div>
       </div>
