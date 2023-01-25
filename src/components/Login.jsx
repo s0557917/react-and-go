@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import Input from "./form/Input";
 
 const Login = () => {
@@ -10,6 +10,7 @@ const Login = () => {
     const { setJWTToken } = useOutletContext(); 
     const { setAlertMessage } = useOutletContext(); 
 
+    const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -17,6 +18,7 @@ const Login = () => {
         if(email === "admin@example.com") {
             setJWTToken("abc")
             setAlertMessage("")
+            navigate("/movies")
         } else {
             setAlertMessage("Invalid credentials!")
         }
